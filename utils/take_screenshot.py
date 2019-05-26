@@ -56,12 +56,12 @@ if __name__ == '__main__':
   app.exec_()
   app.quit()
   x1, y1, x2, y2 = ss.get_captured_area()
+  img = ImageGrab.grab(bbox=(2 * x1, 2 * y1, 2 * x2, 2 * y2))
 
-  save_dir = 'images'
+  save_dir = 'notes/images'
   img_name = input('Save as: ')
   img_name = img_name if img_name else 'screenshot'
   img_name = img_name if img_name.endswith('.png') else img_name + '.png'
   save_path = os.path.join(save_dir, img_name)
-  img = ImageGrab.grab(bbox=(2 * x1, 2 * y1, 2 * x2, 2 * y2))
   img.save(save_path)
   print('Done')
