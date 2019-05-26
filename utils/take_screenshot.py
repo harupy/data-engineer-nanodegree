@@ -1,7 +1,9 @@
 import os
 import sys
-from PyQt5 import QtWidgets, QtCore, QtGui
+import time
 from PIL import ImageGrab
+
+from PyQt5 import QtWidgets, QtCore, QtGui
 
 
 class Screenshot(QtWidgets.QWidget):
@@ -52,6 +54,8 @@ if __name__ == '__main__':
   img_name = img_name if img_name.endswith('.png') else img_name + '.png'
   save_path = os.path.join(save_dir, img_name)
 
+  print('Waiting for 2 seconds')
+  time.sleep(2)
   app = QtWidgets.QApplication(sys.argv)
   ss = Screenshot()
   ss.show()
@@ -59,6 +63,6 @@ if __name__ == '__main__':
   app.quit()
   x1, y1, x2, y2 = ss.get_captured_area()
 
-  img = ImageGrab.grab(bbox=(x1, y1, x2, y2))
+  img = ImageGrab.grab(bbox=(2 * x1, 2 * y1, 2 * x2, 2 * y2))
   img.save(save_path)
   print('Done')
