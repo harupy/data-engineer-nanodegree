@@ -1,9 +1,18 @@
 import os
 import sys
 import time
+import subprocess
+
 from PIL import ImageGrab
 
 from PyQt5 import QtWidgets, QtCore, QtGui
+
+
+def write_to_clipboard(output):
+  process = subprocess.Popen(
+    'pbcopy', env={'LANG': 'en_US.UTF-8'}, stdin=subprocess.PIPE
+  )
+  process.communicate(output.encode('utf-8'))
 
 
 class Screenshot(QtWidgets.QWidget):
@@ -66,4 +75,6 @@ if __name__ == '__main__':
   img_name = img_name if img_name.endswith('.png') else img_name + '.png'
   save_path = os.path.join(save_dir, img_name)
   img.save(save_path)
+  img_md_link = f'![{img_name}](../images/{img_name})'
+  write_to_clipboard(img_md_link)
   print('Done')
