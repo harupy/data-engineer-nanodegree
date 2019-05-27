@@ -6,7 +6,7 @@
 
 ## Data Roles and Skills
 
-![rolls_and_skills.png](./images/roles_and_skills.png)
+![rolls_and_skills.png](../images/roles_and_skills.png)
 
 ## Common Data Engineering Activities
 
