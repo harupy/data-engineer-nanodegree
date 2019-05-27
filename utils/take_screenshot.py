@@ -56,6 +56,8 @@ if __name__ == '__main__':
   app.exec_()
   app.quit()
   x1, y1, x2, y2 = ss.get_captured_area()
+  time.sleep(3)
+
   img = ImageGrab.grab(bbox=(2 * x1, 2 * y1, 2 * x2, 2 * y2))
 
   save_dir = 'notes/images'
