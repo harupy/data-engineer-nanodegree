@@ -115,7 +115,7 @@ NoSQL DB and RDB **DON'T replace** each other for all tasks. Both do different t
 
 ## Wrap Up
 
-We learned
+We learned:
 
 - what is data modeling?
 - who does data modeling?
