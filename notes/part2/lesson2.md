@@ -65,3 +65,102 @@ Unnormalized table:
 
 3NF:
 ![3nf.png](../images/3nf.png)
+
+## Fact and Dimension Tables
+
+- Work together to create an organized data model
+- While fact and dimension are not created differently in the DDL, they are conceptual an extremely important for organization
+
+## Fact Tables
+
+Fact table consists of the measurements, metrics or facts (events that actually happened) of a business process.
+
+Example: customer transactions
+
+## Dimension
+
+A structure that categorizes facts and measures in order to enable users to answer business questions. Dimensions are people, products, place and time.
+
+Example: product information
+
+## Star Schema
+
+Star Schema is the simplest style of data mart schema. The star schema consists of one of more fact tables referencing any number of dimension tables.
+
+## Why "star" schema
+
+- Gets its name from the physical model resembling a star shape
+- A fact table is at its center
+- Dimension table surrounds the fact table representing the star's points
+
+![star_schema.png](../images/star_schema.png)
+
+## Benefits and Drawbacks of Star Schemas
+
+### Benefits
+
+- denormalized
+- simplifies queries
+- fast aggregations
+
+### Drawbacks
+
+- issues that come with denormalization
+- data integrity
+- decrease query flexibility
+- many to many relationship
+
+## Snowflake Schema
+
+Logical arrangement of tables in multidimensional database represented by centralized fact tables which are connected to multiple dimensions
+
+![snowflake_schema.png](../images/snowflake_schema.png)
+
+## Snowflake vs Star
+
+- Star schema is a special, simplified case of the snowflake schema
+- Star schema does not allow for one to many relationships while the snowflake schema does
+- Snowflake schema is more normalized than Star schema but only in 1NF or 2NF, not 3NF
+
+## Data Definition and Constraints
+
+- NOT NULL: the column can't contain a null value
+- UNIQUE: all the rows in one column are unique within the table
+- PRIMARY KEY: The values in this column identify the rows in the table. If a group of columns are defined as a primary key, they are called a composite key. By default, the primary key constraint has the unique and not null constraint built into it.
+
+## Upsert
+
+IN RDBMS language, teh term _upset_ refers to the idea of inserting a new row in an existing table, or updating the row if it already exists in the table. The action of updating or inserting has been described as "upsert".
+
+## ON CONFLICT
+
+Let's say we want to insert the following data.
+
+```SQL
+INSERT into customer_address
+VALUES (432, '758 Main Street', 'Chicago', 'IL');
+```
+
+but we are not sure whether or not this data conflicts the existing records. In this case, we can use **ON CONFLICT DO NOTHING / DO UPDATE**.
+
+```SQL
+ON CONFLICT (customer_id)
+DO NOTHING;
+```
+
+```SQL
+ON CONFLICT (customer_id)
+DO UPDATE
+    SET customer_street  = EXCLUDED.customer_street;
+```
+
+## Wrap Up
+
+We learned:
+
+- What is a relational database
+- OLAP vs OLTP
+- Normalization
+- Denormalization
+- Fact vs Dimension Tables
+- Star and Snowflake schemas
