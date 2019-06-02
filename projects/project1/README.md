@@ -45,7 +45,7 @@ python etl.py
 
 ## Data
 
-`song_data` Example:
+`song_data` Example
 
 ```json
 {
@@ -62,7 +62,7 @@ python etl.py
 }
 ```
 
-`log_data` Example:
+`log_data` Example
 
 ```json
 {
