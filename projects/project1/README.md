@@ -42,6 +42,7 @@ python etl.py
 | etl.ipynb        | A notebook to test the ETL processes                       |
 | data             | A directory containing song and log data                   |
 | requirements.txt | Dependencies required for this project                     |
+| run_project.sh   | A shell script to run the project                          |
 
 ## Table Schemas
 
