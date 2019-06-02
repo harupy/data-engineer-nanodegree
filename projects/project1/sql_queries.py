@@ -57,12 +57,12 @@ time_table_create = ("""
 CREATE TABLE IF NOT EXISTS time (
   time_id serial PRIMARY KEY,
   ts timestamp NOT NULL,
-  hour int,
-  day int,
-  week_of_year int,
-  month int,
-  year int,
-  weekday int
+  hour int NOT NULL,
+  day int NOT NULL,
+  week_of_year int NOT NULL,
+  month int NOT NULL,
+  year int NOT NULL,
+  weekday int NOT NULL
 )
 """)
 
