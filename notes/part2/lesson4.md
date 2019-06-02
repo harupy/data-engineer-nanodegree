@@ -90,3 +90,5 @@ Denormalization in Apache Cassandra is **absolutely** critical. Think about your
 - Normalization
 - Denormalization]
 - Basics of Distributed Database Design
+- Basics of Distributed Database Design
+-
