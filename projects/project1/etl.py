@@ -18,7 +18,7 @@ def process_song_file(cur, filepath):
   Read a song JSON file and insert the data into time, user and songplay table
 
   Args:
-    cur (cursor): A cursor to execute SQL commands
+    cur (cursor): A cursor object to execute SQL queries
     filepath (str): A path to a JSON file
 
   Returns:
@@ -56,7 +56,7 @@ def process_log_file(cur, filepath):
   Read a log JSON file and insert the data into time, user and songplay table
 
   Args:
-    cur (cursor): A cursor to execute SQL commands
+    cur (cursor): A cursor object to execute SQL queries
     filepath (str): A path to a JSON file
 
   Returns:
@@ -151,7 +151,7 @@ def process_data(cur, conn, filepath, func):
 
 
 def main():
-  conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
+  conn = psycopg2.connect('host=127.0.0.1 dbname=sparkifydb user=student password=student')
   cur = conn.cursor()
 
   process_data(cur, conn, filepath='data/song_data', func=process_song_file)
@@ -160,5 +160,5 @@ def main():
   conn.close()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
   main()
