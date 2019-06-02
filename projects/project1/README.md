@@ -43,50 +43,6 @@ python etl.py
 | data             | A directory containing song and log data                   |
 | requirements.txt | Dependencies required for this project                     |
 
-## Data
-
-`song_data` Example
-
-```json
-{
-  "num_songs": 1,
-  "artist_id": "ARD7TVE1187B99BFB1",
-  "artist_latitude": null,
-  "artist_longitude": null,
-  "artist_location": "California - LA",
-  "artist_name": "Casual",
-  "song_id": "SOMZWCG12A8C13C480",
-  "title": "I Didn't Mean To",
-  "duration": 218.93179,
-  "year": 0
-}
-```
-
-`log_data` Example
-
-```json
-{
-  "artist": null,
-  "auth": "Logged In",
-  "firstName": "Walter",
-  "gender": "M",
-  "itemInSession": 0,
-  "lastName": "Frye",
-  "length": null,
-  "level": "free",
-  "location": "San Francisco-Oakland-Hayward, CA",
-  "method": "GET",
-  "page": "Home",
-  "registration": 1540919166796.0,
-  "sessionId": 38,
-  "song": null,
-  "status": 200,
-  "ts": 1541105830796,
-  "userAgent": "\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36\"",
-  "userId": "39"
-}, ...
-```
-
 ## Table Schemas
 
 `songs` table
@@ -155,6 +111,48 @@ python etl.py
 | time       | log_data               | Filter logs by NextPage Action |
 | users      | log_data               | Filter logs by NextPage Action |
 | songplays  | song_data and log_data | Filter logs by NextPage Action |
+
+`song_data` Example
+
+```json
+{
+  "num_songs": 1,
+  "artist_id": "ARD7TVE1187B99BFB1",
+  "artist_latitude": null,
+  "artist_longitude": null,
+  "artist_location": "California - LA",
+  "artist_name": "Casual",
+  "song_id": "SOMZWCG12A8C13C480",
+  "title": "I Didn't Mean To",
+  "duration": 218.93179,
+  "year": 0
+}
+```
+
+`log_data` Example
+
+```json
+{
+  "artist": null,
+  "auth": "Logged In",
+  "firstName": "Walter",
+  "gender": "M",
+  "itemInSession": 0,
+  "lastName": "Frye",
+  "length": null,
+  "level": "free",
+  "location": "San Francisco-Oakland-Hayward, CA",
+  "method": "GET",
+  "page": "Home",
+  "registration": 1540919166796.0,
+  "sessionId": 38,
+  "song": null,
+  "status": 200,
+  "ts": 1541105830796,
+  "userAgent": "\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36\"",
+  "userId": "39"
+}, ...
+```
 
 ## ETL Pipeline
 
