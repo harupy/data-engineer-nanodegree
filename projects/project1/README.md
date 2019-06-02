@@ -92,75 +92,71 @@ python etl.py
 
 `songs` table
 
-| Column      | Datatype | Constraint  |
-| ----------- | -------- | ----------- |
-| `song_id`   | varchar  | PRIMARY KEY |
-| `artist_id` | varchar  | NOT NULL    |
-| `title`     | varchar  | NOT NULL    |
-| `year`      | int      | -           |
-| `duration`  | float    | NOT NULL    |
-|             |          |             |
+| Column    | Datatype | Constraint  |
+| --------- | -------- | ----------- |
+| song_id   | varchar  | PRIMARY KEY |
+| artist_id | varchar  | NOT NULL    |
+| title     | varchar  | NOT NULL    |
+| year      | int      | -           |
+| duration  | float    | NOT NULL    |
 
 `artists` table
 
-| Column             | Datatype | Constraint  |
-| ------------------ | -------- | ----------- |
-| `artist_id`        | varchar  | PRIMARY KEY |
-| `artist_name`      | varchar  | NOT NULL    |
-| `artist_location`  | varchar  | -           |
-| `artist_latitude`  | float    | -           |
-| `artist_longitude` | float    | -           |
-|                    |          |             |
+| Column           | Datatype | Constraint  |
+| ---------------- | -------- | ----------- |
+| artist_id        | varchar  | PRIMARY KEY |
+| artist_name      | varchar  | NOT NULL    |
+| artist_location  | varchar  | -           |
+| artist_latitude  | float    | -           |
+| artist_longitude | float    | -           |
 
 `time` table
 
-| Column         | Datatype  | Constraint  |
-| -------------- | --------- | ----------- |
-| `time_id`      | serial    | PRIMARY KEY |
-| `ts`           | timestamp | NOT NULL    |
-| `hour`         | int       | NOT NULL    |
-| `day`          | int       | NOT NULL    |
-| `week_of_year` | int       | NOT NULL    |
-| `month`        | int       | NOT NULL    |
-| `year`         | int       | NOT NULL    |
-| `weekday`      | int       | NOT NULL    |
-|                |           |             |
+| Column       | Datatype  | Constraint  |
+| ------------ | --------- | ----------- |
+| time_id      | serial    | PRIMARY KEY |
+| ts           | timestamp | NOT NULL    |
+| hour         | int       | NOT NULL    |
+| day          | int       | NOT NULL    |
+| week_of_year | int       | NOT NULL    |
+| month        | int       | NOT NULL    |
+| year         | int       | NOT NULL    |
+| weekday      | int       | NOT NULL    |
 
 `users` table
 
-| Column       | Datatype | Constraint  |
-| ------------ | -------- | ----------- |
-| `user_id`    | int      | PRIMARY KEY |
-| `first_name` | varchar  | NOT NULL    |
-| `last_name`  | varchar  | NOT NULL    |
-| `gender`     | varchar  | NOT NULL    |
-| `level`      | varchar  | NOT NULL    |
-|              |          |             |
+| Column     | Datatype | Constraint  |
+| ---------- | -------- | ----------- |
+| user_id    | int      | PRIMARY KEY |
+| first_name | varchar  | NOT NULL    |
+| last_name  | varchar  | NOT NULL    |
+| gender     | varchar  | NOT NULL    |
+| level      | varchar  | NOT NULL    |
 
 `songplays` table
 
-| Column        | Datatype  | Constraint  |
-| ------------- | --------- | ----------- |
-| `songplay_id` | serial    | PRIMARY KEY |
-| `ts`          | timestamp | NOT NULL    |
-| `user_id`     | int       | NOT NULL    |
-| `level`       | varchar   | NOT NULL    |
-| `song_id`     | varchar   | -           |
-| `artist_id`   | varchar   | -           |
-| `session_id`  | int       | -           |
-| `location`    | varchar   | -           |
-| `user_agent`  | varchar   | -           |
+| Column      | Datatype  | Constraint  |
+| ----------- | --------- | ----------- |
+| songplay_id | serial    | PRIMARY KEY |
+| ts          | timestamp | NOT NULL    |
+| user_id     | int       | NOT NULL    |
+| level       | varchar   | NOT NULL    |
+| song_id     | varchar   | -           |
+| artist_id   | varchar   | -           |
+| session_id  | int       | -           |
+| location    | varchar   | -           |
+| user_agent  | varchar   | -           |
 
 ## Data Sources
 
-| Table       | Data Source                |
-| ----------- | -------------------------- |
-| `songs`     | `song_data`                |
-| `artists`   | `song_data`                |
-| `time`      | `log_data`                 |
-| `users`     | `log_data`                 |
-| `songplays` | `song_data` and `log_data` |
-|             |                            |
+| Table     | Data Source            |
+| --------- | ---------------------- |
+| songs     | song_data              |
+| artists   | song_data              |
+| time      | log_data               |
+| users     | log_data               |
+| songplays | song_data and log_data |
+|           |                        |
 
 ## ETL Pipeline
 
@@ -188,24 +184,17 @@ Extract and insert the following data from `song_data`
 
 ---
 
-### Preprocess for `log_data`
-
-1. Filter `log_data` by NextSong Action
-2. Convert timestamp to datetime
-
----
-
 `time` table
 
-Extract and insert the following data from `log_data`
-
-- `timestamp`
-- `hour`
-- `day`
-- `week of year`
-- `month`
-- `year`
-- `weekday`
+1. Convert timestamp to datetime
+2. Extract and insert the following data from `log_data`
+   - `timestamp`
+   - `hour`
+   - `day`
+   - `week of year`
+   - `month`
+   - `year`
+   - `weekday`
 
 ---
 
