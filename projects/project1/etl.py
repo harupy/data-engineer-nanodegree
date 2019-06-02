@@ -14,6 +14,17 @@ from sql_queries import (
 
 
 def process_song_file(cur, filepath):
+  """
+  Read a song JSON file and insert the data into time, user and songplay table
+
+  Args:
+    cur (cursor): A cursor to execute SQL commands
+    filepath (str): A path to a JSON file
+
+  Returns:
+    None
+  """
+
   # open song file
   df = pd.read_json(filepath, lines=True)
 
@@ -41,6 +52,16 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+  """
+  Read a log JSON file and insert the data into time, user and songplay table
+
+  Args:
+    cur (cursor): A cursor to execute SQL commands
+    filepath (str): A path to a JSON file
+
+  Returns:
+    None
+  """
   # open log file
   df = pd.read_json(filepath, lines=True)
 
@@ -78,7 +99,6 @@ def process_log_file(cur, filepath):
 
   # load user table
   user_df = df[['userId', 'firstName', 'lastName', 'gender', 'level']]
-  user_df = user_df[~user_df['userId'].eq('')]  # remove rows with empty user_id
 
   # insert user records
   for i, row in user_df.iterrows():

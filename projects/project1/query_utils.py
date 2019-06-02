@@ -1,4 +1,4 @@
-def build_insert_query(table_name, columns):
+def build_insert_query(table_name, columns, on_conflict=None):
   """
   Build an insert query
 
@@ -13,10 +13,16 @@ def build_insert_query(table_name, columns):
   >>> build_insert_query('test', ['col1', 'col2'])
   'INSERT INTO test (col1, col2) VALUES (%s, %s)'
 
+  >>> build_insert_query('test', ['col1', 'col2'], "ON CONFLICT (col1) DO NOTHING")
+  'INSERT INTO test (col1, col2) VALUES (%s, %s) ON CONFLICT (col1) DO NOTHING'
+
   """
-  cols = f"{', '.join(columns)}"
-  vals = f"({', '.join(['%s'] * len(columns))})"
-  return f"INSERT INTO {table_name} ({cols}) VALUES {vals}"
+  return "INSERT INTO {} ({}) VALUES ({}) {}".format(
+    table_name,
+    ', '.join(columns),
+    ', '.join(['%s'] * len(columns)),
+    on_conflict if on_conflict else ''
+  ).strip()
 
 
 if __name__ == '__main__':

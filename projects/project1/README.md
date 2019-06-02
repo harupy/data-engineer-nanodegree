@@ -20,7 +20,7 @@ pipenv install
 python create_tables.py
 ```
 
-## Insert data
+## Execute ETL
 
 ```
 python etl.py
@@ -36,5 +36,5 @@ python etl.py
 | etl.py           | Processes files in `data` and inserts the data into tables |
 | test.ipynb       | A notebook to check if the queries work correctly          |
 | etl.ipynb        | A notebook to test the ETL processes                       |
-| data             | A directory to store song and log data                     |
+| data             | A directory containing song and log data                   |
 | requirements.txt | Dependencies required for this project                     |
