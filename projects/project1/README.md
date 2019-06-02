@@ -34,7 +34,7 @@ python etl.py
 
 | File Name        | Description                                                |
 | ---------------- | ---------------------------------------------------------- |
-| sql_queries.py   | Contains all the SQL queries for this project              |
+| sql_queries.py   | Contains all the SQL queries for ETL                       |
 | query_utils.py   | Contains utility functions to create SQL queries           |
 | create_tables.py | Initialize tables                                          |
 | etl.py           | Processes files in `data` and inserts the data into tables |
@@ -148,14 +148,13 @@ python etl.py
 
 ## Data Sources
 
-| Table     | Data Source            |
-| --------- | ---------------------- |
-| songs     | song_data              |
-| artists   | song_data              |
-| time      | log_data               |
-| users     | log_data               |
-| songplays | song_data and log_data |
-|           |                        |
+| Table Name | Data Source            | Preprocess                     |
+| ---------- | ---------------------- | ------------------------------ |
+| songs      | song_data              | -                              |
+| artists    | song_data              | -                              |
+| time       | log_data               | Filter logs by NextPage Action |
+| users      | log_data               | Filter logs by NextPage Action |
+| songplays  | song_data and log_data | Filter logs by NextPage Action |
 
 ## ETL Pipeline
 
@@ -199,7 +198,7 @@ Extract and insert the following data from `song_data`
 
 `users` table
 
-Extract and insert the following data
+Extract and insert the following data from `log_data`
 
 - `userId`
 - `firstName`
@@ -213,9 +212,11 @@ Extract and insert the following data
 
 1. Find `song_id` and `artist_id` from `songs` and `artists` tables using `song`, `artist` and `length`
 2. Extract and insert the following data
+   - `timestamp`
    - `userId`
    - `level`
    - `song_id`
    - `artist_id`
    - `session_id`
    - `location`
+   - `userAgent`
