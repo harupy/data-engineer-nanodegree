@@ -76,7 +76,7 @@ songplay_table_insert = build_insert_query(
 song_table_insert = build_insert_query(
   'songs',
   ['song_id', 'title', 'artist_id', 'year', 'duration'],
-  # 'ON CONFLICT (song_id) DO NOTHING'
+  'ON CONFLICT (song_id) DO NOTHING'
 )
 
 artist_table_insert = build_insert_query(
@@ -93,7 +93,7 @@ time_table_insert = build_insert_query(
 user_table_insert = build_insert_query(
   'users',
   ['user_id', 'first_name', 'last_name', 'gender', 'level'],
-  'ON CONFLICT (user_id) DO NOTHING'
+  'ON CONFLICT (user_id) DO UPDATE SET level = EXCLUDED.level'
 )
 
 

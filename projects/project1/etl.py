@@ -74,7 +74,7 @@ def process_log_file(cur, filepath):
 
   # insert time data records
   time_data = [
-    ts,  # .strftime('%Y-%m-%d %H:%M:%S.%f').str.slice(0, -3),
+    ts,
     ts.dt.hour,
     ts.dt.day,
     ts.dt.weekofyear,
